@@ -1,5 +1,6 @@
-# terraform
-Terraform Deployment
+# Terraform 
+
+Terraform Deployment Examples and advance topics
 
 
 
@@ -12,3 +13,22 @@ mkdir logs
 export TF_LOG_PATH="./logs/terraform.log"
 export TF_LOG="INFO" 
 ```
+
+### Terraform can validate input variables!
+```
+variable "cloudenv" {
+  type        = string
+  description = "Cloud Environment"
+
+  validation {
+    condition = anytrue([
+      var.env == "prd",
+      var.env == "qa",
+      var.env == "uat",
+      var.env == "dev"
+    ])
+    error_message = "Must be a valid Cloud Env, values can be prd, qa, uat, or dev."
+  }
+}
+```
+
