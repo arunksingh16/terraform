@@ -44,3 +44,15 @@ variable "some_info" {
   sensitive = true
 }
 ```
+
+## Variables
+
+ Input Variable Values 
+ 
+ 
+ 
+ ## Good to read blogs
+ 
+ 
+ 
+ https://kevingimbel.de/blog/2021/06/validating-variables-in-terraform/#:~:text=%20Validating%20variables%20in%20terraform%20%201%20Syntax,alltrue%20and...%205%20Further%20reading.%20%20More%20
