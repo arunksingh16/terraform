@@ -32,3 +32,15 @@ variable "cloudenv" {
 }
 ```
 
+### Sensitive Values
+Setting a variable as sensitive prevents Terraform from showing its value in the plan or apply output,
+
+```
+variable "some_info" {
+  type = object({
+    name    = string
+    address = string
+  })
+  sensitive = true
+}
+```
