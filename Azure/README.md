@@ -1,3 +1,6 @@
+# The repository to support Azure Specific Terraform assisted deployment example scenerios.
+
+
 
 
 ### Example -1
