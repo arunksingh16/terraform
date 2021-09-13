@@ -1,7 +1,7 @@
 Manual Creation of SVC Principle
 
 
-`Create` 
+- Create
 
 ```
 subscriptionId=$(az account show --query id -o tsv)
@@ -10,7 +10,7 @@ az ad sp create-for-rbac -n "MyApp" --role Contributor \
 --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroup1} /subscriptions/{SubID}/resourceGroups/{ResourceGroup2}
 ```
 
-`test`
+- test
 ```
 
 # login using svc principle
@@ -23,7 +23,7 @@ az role assignment list --all -o tsv
 az role assignment list --assignee $servicePrincipalAppId --all
 ```
 
-`Search your SVC Principle`
+- Search your SVC Principle
 ```
 az ad sp list  --filter "displayname eq 'spn-example'"
 ```
