@@ -16,3 +16,6 @@ Azure Network Components Creation
 
 ### Example -3
 Validations using Terraform.
+
+### Example -4
+Using DATA to fetch config from Azure Cloud external resource
