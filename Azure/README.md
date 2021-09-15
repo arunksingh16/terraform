@@ -19,3 +19,19 @@ Validations using Terraform.
 
 ### Example -4
 Using DATA to fetch config from Azure Cloud external resource
+
+
+
+
+# Scenrios
+
+## How to manage terraform state? 
+
+
+## How to control developers to stay/access in one resource group
+
+There can be multiple scenerios. 
+
+Option 1: You can control it at service principle level as well. Give access to Svc Prin to specific resource group only.
+Option 2: In terraform deployment provide option of specific resource groups to select only 
+
