@@ -35,3 +35,9 @@ There can be multiple scenerios.
 Option 1: You can control it at service principle level as well. Give access to Svc Prin to specific resource group only.
 Option 2: In terraform deployment provide option of specific resource groups to select only 
 
+
+## Import existing resources in terraform 
+- Greenfield implementation is not viable everytime
+- use terraform import
+
+
