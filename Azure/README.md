@@ -20,6 +20,11 @@ Validations using Terraform.
 ### Example -4
 Using DATA to fetch config from Azure Cloud external resource
 
+### Example -5
+AKS Cluster Deployment
+
+### Example -6
+AKS Cluster with Gateway Deployment
 
 
 
