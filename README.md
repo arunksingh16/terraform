@@ -69,5 +69,8 @@ path.cwd - Returns the filesystem path of the current working directory
 
 ### Best Practises
 https://www.terraform-best-practices.com/
+</br>
 https://github.com/antonbabenko/terraform-best-practices
+</br>
 https://github.com/ozbillwang/terraform-best-practices
+</br>
