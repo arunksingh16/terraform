@@ -74,3 +74,4 @@ https://github.com/antonbabenko/terraform-best-practices
 </br>
 https://github.com/ozbillwang/terraform-best-practices
 </br>
+https://github.com/antonbabenko/terraform-best-practices-workshop
