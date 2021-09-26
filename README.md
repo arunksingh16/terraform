@@ -66,3 +66,8 @@ path.cwd - Returns the filesystem path of the current working directory
 - https://kevingimbel.de/blog/2021/06/validating-variables-in-terraform/#:~:text=%20Validating%20variables%20in%20terraform%20%201%20Syntax,alltrue%20and...%205%20Further%20reading.%20%20More%20
 - https://faun.pub/azure-devops-deploying-azure-resources-using-terraform-1f2fe46c6aa0
 - https://www.terraform.io/docs/language/values/variables.html#custom-validation-rules
+
+### Best Practises
+https://www.terraform-best-practices.com/
+https://github.com/antonbabenko/terraform-best-practices
+https://github.com/ozbillwang/terraform-best-practices
