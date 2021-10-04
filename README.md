@@ -3,6 +3,36 @@
 Terraform Deployment Examples and advance topics.
 
 
+### terraform output and validate
+
+`terraform output` values allow you to export structured data about your resources. You can use this data to configure other parts of your infrastructure with automation tools.
+```
+output "ami-1" {
+  value = "${data.aws_ami.amazon_linux.id}"
+}
+```
+o/p
+```
+$ terraform output                
+ami-1 = "ami-087c17d1fe0178315"
+
+$ terraform output -json
+{
+  "ami-1": {
+    "sensitive": false,
+    "type": "string",
+    "value": "ami-087c17d1fe0178315"
+  },
+```
+### terraform locals.
+Terraform locals are named values that you can refer to in your configuration.  Terraform's locals don't change values during or between Terraform runs such as plan, apply, or destroy. Combining it with variables gives you more power.
+```
+locals {
+  name_suffix = "${var.resource_tags["project"]}-${var.resource_tags["environment"]}"
+}
+```
+
+
 ### How to Debug terraform
 
 You can set TF_LOG to one of the log levels TRACE, DEBUG, INFO, WARN or ERROR to change the verbosity of the logs.
@@ -118,6 +148,11 @@ resource "aws_instance" "srv" {
   user_data                   = templatefile("user_data.tftpl", { department = var.user_department, name = var.user_name })
 }
 ```
+
+### Terraform Lock file
+
+You should include the lock file in your version control repository to ensure that Terraform uses the same provider versions across your team and in ephemeral remote execution environments.
+
 
 
 ### terraform modules tips
