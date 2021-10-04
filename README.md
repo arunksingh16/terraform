@@ -96,6 +96,30 @@ resource "azurerm_key_vault_secret" "winvm_kv_secret" {
 }
 ```
 
+
+### terraform functions
+The Terraform language includes a number of built-in functions that you can call from within expressions to transform and combine values. 
+`templatefile` function
+```
+#!/bin/bash
+sudo apt-get -y -qq install curl wget git vim apt-transport-https ca-certificates
+sudo groupadd -r ${department}
+sudo useradd -m -s /bin/bash ${name}
+sudo usermod -a -G ${department} ${name}
+```
+using it in resource
+```
+resource "aws_instance" "srv" {
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.subnet_public.id
+  vpc_security_group_ids      = [aws_security_group.sg_8080.id]
+  associate_public_ip_address = true
+  user_data                   = templatefile("user_data.tftpl", { department = var.user_department, name = var.user_name })
+}
+```
+
+
 ### terraform modules tips
 
 By default, Terraform interprets the path relative to the current working directory
