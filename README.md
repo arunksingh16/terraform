@@ -8,7 +8,16 @@ Terraform Deployment Examples and advance topics.
 - In Cloud Deployment you may be using other tools or interacting with other technologies in that case ARM templates / CloudFormation wont help you but terraform can.
 - Terraform is not perfect but improvement is continuous process.
 - Resource created in dependen
-- Single res 
+- Single resource creation using CloudFormation or Azure ARM needs 100s of lines. This needs little more maintainibility effort and error prone process compare to few lines of code.
+- Modular design promotes usability
+
+
+### Greenfield vs Brownfield
+
+In brownfield you may need to reverse engineer the process.
+
+Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Scan 
+
 
 ### Production Structure Scenerios 
 
