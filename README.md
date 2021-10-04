@@ -2,6 +2,19 @@
 
 Terraform Deployment Examples and advance topics.
 
+### Why terraform in IaaC
+
+- Terraform HCL is generic in respect to every cloud provider so it is easy to transfer knowledge or infra using same set of understanding. 
+- In Cloud Deployment you may be using other tools or interacting with other technologies in that case ARM templates / CloudFormation wont help you but terraform can.
+- Terraform is not perfect but improvement is continuous process.
+
+
+### Production Structure Scenerios 
+
+- Use workspaces if required not mandatory though
+- 
+
+
 
 ### terraform output and validate
 
@@ -147,6 +160,12 @@ resource "aws_instance" "srv" {
   associate_public_ip_address = true
   user_data                   = templatefile("user_data.tftpl", { department = var.user_department, name = var.user_name })
 }
+```
+
+ex 2
+Using slice function, it takes list as input and slice it. In the below example we are taking list `data.aws_availability_zones.available.names` and starting it from 0 and cutting it of with the number `var.subnet_count`
+```
+  azs = slice(data.aws_availability_zones.available.names, 0, var.subnet_count)
 ```
 
 ### Terraform Lock file
