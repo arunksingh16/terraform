@@ -83,6 +83,18 @@ output "azname-2" {
 
 ```
 
+### explicit dependency
+Implicit dependencies are the primary way that Terraform understands the relationships between your resources. Sometimes there are dependencies between resources that are not visible to Terraform. Use `depends_on` in that case.
+```
+resource "azurerm_key_vault_secret" "winvm_kv_secret" {
+  name         = "winvm-pass"
+  value        = "${random_password.vm_pass.result}"
+  key_vault_id = "${azurerm_key_vault.kv.id}"
+  depends_on = [
+    azurerm_key_vault.kv,
+    ]
+}
+```
 
 ### terraform modules tips
 
