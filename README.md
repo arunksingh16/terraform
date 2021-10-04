@@ -7,13 +7,15 @@ Terraform Deployment Examples and advance topics.
 - Terraform HCL is generic in respect to every cloud provider so it is easy to transfer knowledge or infra using same set of understanding. 
 - In Cloud Deployment you may be using other tools or interacting with other technologies in that case ARM templates / CloudFormation wont help you but terraform can.
 - Terraform is not perfect but improvement is continuous process.
-
+- Resource created in dependen
+- Single res 
 
 ### Production Structure Scenerios 
 
 - Use workspaces if required not mandatory though
+- Use `terraform_remote_state` 
+- Use `tf lint` or git precommit hook
 - 
-
 
 
 ### terraform output and validate
@@ -125,6 +127,26 @@ output "azname-2" {
 }
 
 ```
+
+### terraform_remote_state Data Source 
+
+When possible, we recommend explicitly publishing data for external consumption to a separate location instead of accessing it via remote state.
+```
+data "terraform_remote_state" "stage-network" {
+  backend = "s3"
+  config = {
+    bucket          = "mybket"
+    key             = "stage/dev/terraform.tfstate"
+  }
+}
+
+resource "aws_instance" "demo"
+{
+  subnet_id = "${data.terraform_remote_state.vpc.subnet_id}"
+}
+
+```
+
 
 ### explicit dependency
 Implicit dependencies are the primary way that Terraform understands the relationships between your resources. Sometimes there are dependencies between resources that are not visible to Terraform. Use `depends_on` in that case.
