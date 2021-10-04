@@ -1,7 +1,6 @@
 # Terraform 
 
-Terraform Deployment Examples and advance topics
-
+Terraform Deployment Examples and advance topics.
 
 
 ### How to Debug terraform
@@ -52,8 +51,39 @@ variable "some_info" {
 - Individually, with the -var command line option. `terraform apply -var="image_id=ami-abc123"`
 - In variable definitions (.tfvars) files, either specified on the command line or automatically loaded. `terraform apply -var-file="testing.tfvars"`
 - As environment variables. `export TF_VAR_image_id=ami-abc123` Terraform can search for environment variables named `TF_VAR_` followed by the name of a declared variable.
- 
- 
+
+
+### data sources
+
+`data` resource can be use to pull information from remote system or in some cases locally.
+example
+```
+# Declare the data source
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+# use it 
+module "vpc" {
+   source  = "terraform-aws-modules/vpc/aws"
+   version = "2.64.0"
+   cidr = var.vpc_cidr_block
+   azs  = data.aws_availability_zones.available.names
+
+ }
+
+# you can print o/p 
+output "azname-1" {
+  value = "${data.aws_availability_zones.available.names[0]}"
+}
+
+output "azname-2" {
+  value = "${data.aws_availability_zones.available.names[1]}"
+}
+
+```
+
+
 ### terraform modules tips
 
 By default, Terraform interprets the path relative to the current working directory
