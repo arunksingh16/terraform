@@ -18,3 +18,6 @@ aws configure
 
 ### EXAMPLE -1 
 Fetching details using `data`
+
+### EXAMPLE -2
+Create a bucket and dynamo DB for backend
