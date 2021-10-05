@@ -24,8 +24,11 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 - Use workspaces if required not mandatory though
 - Use `terraform_remote_state` 
 - Use `tf lint` or git precommit hook
-- 
-
+- Use suitable design pattern
+- Use `terraforming` cli for import if required 
+- Lock specific version
+- Use `terraform fmt` in precommit hook
+- Use `terraform docs` to generate documentation 
 
 ### terraform output and validate
 
