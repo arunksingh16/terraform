@@ -30,6 +30,7 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 - Use `terraform fmt` in precommit hook
 - Use `terraform docs` to generate documentation
 - Use saved `plan` for deployment
+- To prevent resource deletion add `prevent_destroy`
 
 ### terraform output and validate
 
@@ -57,6 +58,47 @@ Terraform locals are named values that you can refer to in your configuration.  
 ```
 locals {
   name_suffix = "${var.resource_tags["project"]}-${var.resource_tags["environment"]}"
+}
+```
+### terraform resource lifecycle
+
+- To prevent destroy operations for specific resources, you can add the prevent_destroy attribute to your resource definition.
+
+```
+resource "aws_instance" "example" {
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = "t2.micro"
+  vpc_security_group_ids = [aws_security_group.sg_web.id]
+  user_data              = <<-EOF
+              #!/bin/bash
+              echo "Hello, World" > index.html
+              nohup busybox httpd -f -p 8080 &
+              EOF
+  tags = {
+    Name          = "terraform-learn-state-ec2"
+    drift_example = "v1"
+  }
+
+ lifecycle {
+   prevent_destroy = true
+ }
+}
+
+```
+- Create resources before they are destroyed
+
+```
+  lifecycle {
+   create_before_destroy = true
+  }
+
+```
+
+- Ignore changes
+```
+  lifecycle {
+   ignore_changes        = [tags]
+  }
 }
 ```
 
