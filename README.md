@@ -35,7 +35,10 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 ### Using Terraform Modules
 
 - Totally depends on your org. Org needs to decide how much level of abstraction they can afford.
-
+- How much `terraform apply` will impact
+- How much `terraform destroy` will impact
+- Rate of change in your org
+- Consider writing examples and tests
 
 ### terraform output and validate
 
