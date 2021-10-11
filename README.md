@@ -32,6 +32,11 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 - Use saved `plan` for deployment
 - To prevent resource deletion add `prevent_destroy`
 
+### Using Terraform Modules
+
+- Totally depends on your org. Org needs to decide how much level of abstraction they can afford.
+
+
 ### terraform output and validate
 
 `terraform output` values allow you to export structured data about your resources. You can use this data to configure other parts of your infrastructure with automation tools.
