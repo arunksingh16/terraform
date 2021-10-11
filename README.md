@@ -39,6 +39,7 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 - How much `terraform destroy` will impact
 - Rate of change in your org
 - Consider writing examples and tests
+- Module depth
 
 ### terraform output and validate
 
