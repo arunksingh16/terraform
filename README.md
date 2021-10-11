@@ -40,6 +40,7 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 - Rate of change in your org
 - Consider writing examples and tests
 - Module depth
+- Use module version
 
 ### terraform output and validate
 
