@@ -295,3 +295,5 @@ https://github.com/antonbabenko/terraform-best-practices
 https://github.com/ozbillwang/terraform-best-practices
 </br>
 https://github.com/antonbabenko/terraform-best-practices-workshop
+</br>
+https://github.com/Azure/awesome-terraform
