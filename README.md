@@ -81,6 +81,15 @@ locals {
   name_suffix = "${var.resource_tags["project"]}-${var.resource_tags["environment"]}"
 }
 ```
+
+## Module Basics
+- Module naming standard need to be followed
+- Use validation rules in respect to variables if required
+- Structure your module as per your requirement
+- Follow terraform suggestion `A good module should raise the level of abstraction by describing a new concept in your architecture that is constructed from resource types offered by providers. We do not recommend writing modules that are just thin wrappers around single other resource types.`
+- Test your module (terratest / tfsec by aquasecurity)
+
+
 ### terraform resource lifecycle
 
 - To prevent destroy operations for specific resources, you can add the prevent_destroy attribute to your resource definition.
