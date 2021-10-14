@@ -317,3 +317,5 @@ https://github.com/ozbillwang/terraform-best-practices
 https://github.com/antonbabenko/terraform-best-practices-workshop
 </br>
 https://github.com/Azure/awesome-terraform
+</br>
+https://github.com/28mm/blast-radius
