@@ -42,6 +42,17 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 - Module depth
 - Use module version
 
+### Using Terraform Destroy
+
+- Prepare a plan for destroy not directly execute `destroy`
+- Execute the destroy plan
+
+```
+terraform plan -destroy -out uat-destroy.tfplan
+terraform apply -destroy uat-destroy.tfplan
+
+```
+
 ### terraform output and validate
 
 `terraform output` values allow you to export structured data about your resources. You can use this data to configure other parts of your infrastructure with automation tools.
