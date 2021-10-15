@@ -340,3 +340,7 @@ https://github.com/antonbabenko/terraform-best-practices-workshop
 https://github.com/Azure/awesome-terraform
 </br>
 https://github.com/28mm/blast-radius
+</br>
+https://chrismatteson.github.io/terraform-102/#1
+</br>
+https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/#63
