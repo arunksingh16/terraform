@@ -50,10 +50,29 @@ Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Sc
 ```
 terraform plan -destroy -out uat-destroy.tfplan
 terraform apply -destroy uat-destroy.tfplan
-
 ```
 
-### terraform output and validate
+### Using Terraform -refresh=false, -refresh-only
+
+Make changes to your infrastructure in Terraform Cloud and Terraform Enterprise faster with the new -refresh=false, -refresh-only, and replace planning options.
+
+`-refresh=false`
+Disables the default behavior of synchronizing the Terraform state with remote objects before checking for configuration changes. 
+Executes plan faster
+
+```
+terraform plan -refresh=false -out uat.tfplan
+```
+
+`-refresh-only`
+creates a plan whose goal is only to update the Terraform state and any root module output values to match changes made to remote objects outside of Terraform. 
+This can be  # # useful if you've intentionally changed one or more remote objects outside of the usual workflow (e.g. while responding to an incident) and you now need to reconcile Terraform's # records with those changes.
+
+```
+terraform plan -refresh-only -out uat.tfplan
+```
+
+### Terraform output and validate
 
 `terraform output` values allow you to export structured data about your resources. You can use this data to configure other parts of your infrastructure with automation tools.
 ```
@@ -74,7 +93,7 @@ $ terraform output -json
     "value": "ami-087c17d1fe0178315"
   },
 ```
-### terraform locals.
+### Terraform locals.
 Terraform locals are named values that you can refer to in your configuration.  Terraform's locals don't change values during or between Terraform runs such as plan, apply, or destroy. Combining it with variables gives you more power.
 ```
 locals {
@@ -111,7 +130,7 @@ provisioner "file" {
 - Test your module (terratest / tfsec by aquasecurity)
 
 
-### terraform resource lifecycle
+### Terraform resource lifecycle
 
 - To prevent destroy operations for specific resources, you can add the prevent_destroy attribute to your resource definition.
 
