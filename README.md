@@ -82,6 +82,27 @@ locals {
 }
 ```
 
+### Terraform File Provisioner
+
+The Terraform file provisioner copies files onto the remote machine. Note the connection block of code inside the provisioner block. The file provisioner supports both SSH and WinRM connections.
+```
+provisioner "file" {
+  source      = "files/"
+  destination = "/home/${var.admin_username}/"
+  connection {
+    type     = "ssh"
+    user     = "${var.admin_username}"
+    password = "${var.admin_password}"
+    host     = "${azurerm_public_ip.catapp-pip.fqdn}"
+  }
+}
+```
+
+### Terraform Provisioners
+
+`local-exec`: Runs code locally on system where Terraform is being ran with permissions Terraform has
+`remote-exec`: Requires connection information and uses SSH or WINRM to run commands remotely on another system
+
 ## Module Basics
 - Module naming standard need to be followed
 - Use validation rules in respect to variables if required
