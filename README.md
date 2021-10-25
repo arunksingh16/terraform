@@ -122,6 +122,27 @@ provisioner "file" {
 `local-exec`: Runs code locally on system where Terraform is being ran with permissions Terraform has
 `remote-exec`: Requires connection information and uses SSH or WINRM to run commands remotely on another system
 
+### Terraform toset and tolist
+Pass a list value to toset to convert it to a set, which will remove any duplicate elements and discard the ordering of the elements.
+```
+resource "aws_iam_user" "the-accounts" {
+  for_each = toset( ["Todd", "James", "Alice", "Dottie"] )
+  name     = each.key
+}
+```
+
+Pass a set value to tolist to convert it to a list. Since set elements are not ordered, the resulting list will have an undefined order that will be consistent within a particular run of Terraform.
+```
+> tolist(["a", "b", 3])
+[
+  "a",
+  "b",
+  "3",
+]
+```
+
+** there are type conversion function https://www.terraform.io/docs/language/functions/can.html
+
 ## Module Basics
 - Module naming standard need to be followed
 - Use validation rules in respect to variables if required
