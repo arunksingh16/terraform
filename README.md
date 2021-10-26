@@ -1,6 +1,6 @@
 # Terraform 
 
-Terraform Deployment Examples and advance topics.
+Terraform Deployment Examples and advance topics. This readme also include few important concepts in respect Terraform EcoSystem.
 
 ### Why terraform in IaaC
 
@@ -142,6 +142,27 @@ Pass a set value to tolist to convert it to a list. Since set elements are not o
 ```
 
 ** there are type conversion function https://www.terraform.io/docs/language/functions/can.html
+
+### Terraform count and for_each
+sometimes you want to manage several similar objects (like a fixed pool of compute instances) without writing a separate block for each one. Terraform has two ways to do this: `count` and `for_each`.
+```
+variable "subnet" {
+  type    = map(any)
+  default = {
+    "subnet1" = ["10.0.1.0/24"]
+    "subnet2" = ["10.0.2.0/24"]
+  }
+}
+
+resource "azurerm_subnet" "subnet" {
+  for_each = tomap( var.subnet )
+  name                                           = each.key
+  resource_group_name                            = data.azurerm_resource_group.rgdata.name
+  virtual_network_name                           = azurerm_virtual_network.vnet.name
+  address_prefixes                               = each.value
+}
+```
+
 
 ## Module Basics
 - Module naming standard need to be followed
