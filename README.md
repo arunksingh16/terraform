@@ -15,7 +15,6 @@ Terraform Deployment Examples and advance topics. This readme also include few i
 ### Greenfield vs Brownfield
 
 In brownfield you may need to reverse engineer the process.
-
 Terraform State -> Diff -> Define and HardCode -> Test (Smoke Test - Security Scan 
 
 
@@ -380,8 +379,6 @@ add following in your `.gitignore` file
 *.tfstate
 *.tfstate.backup
 ```
-
-
 
 
  ### Good to read blogs
