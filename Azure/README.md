@@ -28,12 +28,28 @@ AKS Cluster with Gateway Deployment
 
 
 
-# Scenrios
+## Scenrios
 
-## How to manage terraform state? 
+### How to use Azure Resource Manager (ARM) with Terraform
+
+```
+resource "azurerm_template_deployment" "template_deployment" {
+  name                = "terraform-ARM-deployment"
+  resource_group_name = azurerm_resource_group.resource_group.name
+  template_body       = file("${path.module}/templates/fie.json")
+  deployment_mode     = "Incremental"
+ 
+  parameters = {
+    xx = "yy"
+  }
+}
+```
 
 
-## How to control developers to stay/access in one resource group
+### How to manage terraform state? 
+
+
+### How to control developers to stay/access in one resource group
 
 There can be multiple scenerios. 
 
@@ -41,7 +57,7 @@ Option 1: You can control it at service principle level as well. Give access to 
 Option 2: In terraform deployment provide option of specific resource groups to select only 
 
 
-## Import existing resources in terraform 
+### Import existing resources in terraform 
 - Greenfield implementation is not viable everytime
 - use terraform import
 
