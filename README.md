@@ -51,6 +51,21 @@ terraform plan -destroy -out uat-destroy.tfplan
 terraform apply -destroy uat-destroy.tfplan
 ```
 
+### Interpolation Syntax and Directives
+https://www.terraform.io/docs/configuration-0-11/interpolation.html
+https://www.terraform.io/docs/language/expressions/index.html
+Embedded within strings in Terraform, whether you're using the Terraform syntax or JSON syntax, you can interpolate other values. A ${ ... } sequence is an interpolation, which evaluates the expression given between the markers, converts the result to a string if necessary, and then inserts it into the final string:
+```
+"Hello, ${var.name}!"
+```
+A %{ ... } sequence is a directive, which allows for conditional results and iteration over collections, similar to conditional and for expressions.
+```
+%{ for ip in aws_instance.example.*.private_ip }
+server ${ip}
+%{ endfor }
+```
+
+
 ### Using Terraform -refresh=false, -refresh-only
 
 Make changes to your infrastructure in Terraform Cloud and Terraform Enterprise faster with the new -refresh=false, -refresh-only, and replace planning options.
@@ -378,6 +393,17 @@ add following in your `.gitignore` file
 .terraform
 *.tfstate
 *.tfstate.backup
+```
+
+### Escape Double Quote in Variable
+```
+locals {
+  authorized_ip_adress = "\"10.0.0.1\", \"10.0.0.2\", \"10.0.0.3\""
+}
+
+output "authorized_ip_adress" {
+  value = local.authorized_ip_adress
+}
 ```
 
 
