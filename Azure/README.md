@@ -48,6 +48,22 @@ resource "azurerm_template_deployment" "template_deployment" {
 
 ### How to manage terraform state? 
 
+```
+# create sp
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subcription-id>" --name "tf-remote-bk"
+```
+
+above command will produce output, please update following env variables
+- ARM_SUBSCRIPTION_ID	     === SUBSCRIPTION_ID from the last command's input.
+- ARM_CLIENT_ID	           === appID from the last command's output.
+- ARM_CLIENT_SECRET	       === password from the last command's output. (Sensitive)
+- ARM_TENANT_ID	           ===tenant from the last command's output.
+
+```
+# if sp is not in use 
+$ az ad sp delete --id "xxx-xxxx-xxxx--xxxxx"
+```
+
 
 ### How to control developers to stay/access in one resource group
 
