@@ -405,6 +405,10 @@ output "authorized_ip_adress" {
   value = local.authorized_ip_adress
 }
 ```
+### Terraform code scanner
+https://github.com/bridgecrewio/checkov
+https://github.com/accurics/terrascan 
+https://github.com/aquasecurity/tfsec
 
 
  ### Good to read blogs
