@@ -432,3 +432,5 @@ https://github.com/28mm/blast-radius
 https://chrismatteson.github.io/terraform-102/#1
 </br>
 https://hashicorp.github.io/field-workshops-terraform/slides/azure/terraform-oss/#63
+</br>
+https://github.com/kumarvna/terraform-azurerm-app-service
